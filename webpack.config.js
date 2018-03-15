@@ -24,27 +24,31 @@ module.exports = {
         inject: 'body'
       })
     ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-
-        ]
-
-      },
-      {
-        test: /\.js$/,
-        exclude: [
-          /node_modules/,
-          /spec/,
-          /js/
-        ],
-        loader: "eslint-loader"
-      }
-
-    ]
-  }
-};
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "eslint-loader"
+        },
+        {
+          test: /\.js$/,
+          exclude: [
+            /node_modules/,
+            /spec/
+          ],
+          loader: "babel-loader",
+          options: {
+            presets: ['es2015']
+          }
+        }
+      ]
+    }
+  };
